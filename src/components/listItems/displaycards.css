@@ -1,0 +1,134 @@
+@import "../../Styles/General.css";
+
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-bottom: 0;
+  margin-top: 14px;
+}
+
+.controlador-titulo {
+  display: flex;
+  margin: 0 0 0 90px;
+}
+
+.contenedor-principal {
+  position: relative;
+  margin-right: 90px;
+  margin-left: 90px;
+}
+
+.flecha-izquierda,
+.flecha-derecha {
+  position: absolute;
+  border: none;
+  background: rgba(0, 0, 0, 0.4);
+  font-size: 40px;
+  height: 50%;
+  top: calc(50% - 40%);
+  line-height: 40px;
+  width: 50px;
+  cursor: pointer;
+  z-index: 500;
+  transition: 0.3s ease all;
+}
+
+.flecha-izquierda:hover,
+.flecha-derecha:hover {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+.flecha-izquierda {
+  left: 0px;
+}
+.flecha-derecha {
+  right: 0px;
+}
+
+.contenedor-carrusel {
+  width: 100%;
+  padding: 20px 0;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+
+.carrusel {
+  display: grid;
+  gap: 4px;
+  grid-auto-flow: column;
+  grid-auto-columns: 20%;
+  /* Esto agrega la barra para hacer scroll lateral */
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+  scroll-behavior: smooth;
+}
+
+.carrusel::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.snaps-inline {
+  scroll-snap-type: inline mandatory;
+  scroll-padding-inline: 1 rem;
+}
+
+/* Lo que hace es que siempre que se haga scroll se va a poner en el inicio de los emelemntos*/
+.snaps-inline > * {
+  scroll-snap-align: start;
+}
+
+.carrusel div {
+  padding: 0.2vw;
+}
+
+.slide-elements.hover {
+  transform: scale(1.2);
+  transform-origin: center;
+}
+.slide-elements img {
+  inline-size: 100%;
+  vertical-align: top;
+  border-radius: 8px;
+}
+.slide-elements h2 {
+  font-weight: 700;
+  font-size: 18px;
+  text-align: center;
+  margin-top: 12px;
+}
+
+.slide-elements p {
+  font-weight: 500;
+}
+
+@media (max-width: 840px) {
+  h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    text-align: left;
+  }
+  .contenedor-carrusel {
+    overflow: visible;
+  }
+  .contenedor-principal {
+    margin-right: 10px;
+    margin-left: 10px;
+  }
+  .carrusel {
+    grid-auto-flow: revert;
+    grid-auto-columns: revert;
+    overflow-x: none;
+  }
+
+  .slide-elements img {
+    inline-size: 100%;
+    vertical-align: top;
+    border-radius: 8px;
+  }
+
+  .indicadores,
+  .flecha-derecha,
+  .flecha-izquierda {
+    display: none;
+  }
+}
